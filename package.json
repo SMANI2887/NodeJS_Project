@@ -1,0 +1,28 @@
+{
+  "name": "index.js",
+  "version": "1.0.0",
+  "description": "Zenclass Ticketing system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMANI2887/NodeJS_Project.git"
+  },
+  "author": "MANIKANDAN SELVARAJ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SMANI2887/NodeJS_Project/issues"
+  },
+  "homepage": "https://github.com/SMANI2887/NodeJS_Project#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.4.0"
+  }
+}
