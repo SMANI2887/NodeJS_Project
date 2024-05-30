@@ -1,7 +1,10 @@
 const userController = {
-    signup: (request, response) => {
-        // console.log('userController')
-        response.send('userController')
+    signup: async (request, response) => {
+        try{
+            response.json({ message:"signup routes" })
+        }catch(error){
+            response.status(500).json({ message:error.message})
+        }
     } 
 }
 
