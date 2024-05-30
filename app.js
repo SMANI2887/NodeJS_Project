@@ -14,5 +14,10 @@ app.use(cors());
 //  use the express.json middleware
 app.use(express.json());
 
+//  define the endpoints 
+app.get('/',(request, response) => {
+    response.send('<h1>Hello World!!</h1>')
+})
+
 // export the app
 module.exports = app;
