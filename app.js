@@ -7,6 +7,7 @@ const app = express();
 
 // require cors
 const cors = require('cors');
+const userRoutes = require('./routes/userRoutes');
 
 // use the cors middleware
 app.use(cors());
@@ -15,9 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 //  define the endpoints 
-app.get('/',(request, response) => {
-    response.send('<h1>Hello World!!</h1>')
-})
+app.use('/api/users', userRoutes)
 
 // export the app
 module.exports = app;
