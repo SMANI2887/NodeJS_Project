@@ -6,7 +6,8 @@ const userRoutes = express.Router();
 
 //  import userController
 const userController = require('../controllers/userController')
-userRoutes.post('/',userController.signup);
+userRoutes.post('/signup',userController.signup);
+
 
 //  export the userRoutes
 module.exports = userRoutes;
