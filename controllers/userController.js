@@ -1,5 +1,6 @@
 // import userModels
-const UserModles = require('../modles/userModles')
+const UserModles = require('../modles/userModles');
+const jwt = require('jsonwebtoken')
 
 // import bcrypt
 const bcrypt = require('bcrypt')
@@ -42,6 +43,47 @@ const userController = {
         }catch(error){
             response.status(500).json({ message:error.message})
         }
+    },
+
+    signin: async (request, response) => {
+        try {
+            // get username ,password from the request body
+            const { username, password } = request.body;
+            
+
+            // check if the user is exists in the database
+            const user = await UserModles.findOne({ username });
+            
+
+            // if user not in database return error
+            if(!user){
+                return response.json({ error: 'user not found '})
+            }
+           
+            // if user exists chect password is correct
+            const passwordMatch = await bcrypt.compare(password,  user.passwordHash);
+            
+            // if password incorrect, return an error
+            if(!passwordMatch){
+                return response.json({ error: 'password is incorrect '})
+            }
+
+           
+
+            // if password correct, generate token it jsonwebtoken
+            const token = jwt.sign({
+                id:user._id,
+                username:user.username,
+                name:user.name
+            },process.env.JWT_SECRET);
+
+            response.json({ message: 'user signed in', token, username: user.username, name: user.name,})
+        }catch(error){
+            // response.status(500).json({ error: request.body})
+
+            response.status(500).json({ error: error.message })
+        }
+
     }
 
     
